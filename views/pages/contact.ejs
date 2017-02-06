@@ -1,0 +1,18 @@
+<%- contentFor('main') %>
+<h1>Welcome to Bhalisa.</h1>
+
+<div class="jumbotron text-center">
+<%- contentFor('body') %>
+<p>We will sort you out</p>
+<form action="/contact" method="POST">
+<div class="form-group">
+<label>Name</name>
+<input type="text" name="name" class="form-control"/>
+</div>
+<div class="form-group">
+<label>Message</name>
+<input type="text" name="message" class="form-control"/>
+</div>
+<input type="submit" class="btn btn-primary" value="Go!"/>
+</form>
+</div>

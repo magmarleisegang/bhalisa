@@ -1,0 +1,18 @@
+<%- contentFor('main') %>
+<h1>Welcome to Bhalisa.</h1>
+
+<%- contentFor('body') %>
+<div class="jumbotron text-center">
+    <p>We will sort you out</p>
+    <h2>Who we are</h2>
+    <div class="row">
+        <% for (user of users) { %>
+        <div class="col-sm-3">
+            <h3> <%= user.name %></h3>
+            <img src="<%= user.avatar %>" class="img-responsive" />
+
+        </div>
+        <% } %>
+    </div>
+<a href="contact.html" class="btn btn-lg btn-primary">just tell us about you</a>
+</div>

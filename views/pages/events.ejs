@@ -1,0 +1,20 @@
+<%- contentFor('main') %>
+<h1>Welcome to Bhalisa.</h1>
+
+<%- contentFor('body') %>
+<div class="jumbotron text-center">
+    <h2>Events</h2>
+    <table class="table table-striped">
+    <thead><tr><th>Name</th><th>Date</th><th>code</th></tr></thead>
+    <tbody>
+        <% for (event of events) { %>
+        <tr>
+            <td><%= event.name %></td>
+            <td><%= event.date %></td>
+			<td><a href="/events/<%= event.code %>">edit</a></td>
+	     </tr>
+        <% } %>
+        </tbody>
+    </table>
+<a href="contact.html" class="btn btn-lg btn-primary">just tell us about you</a>
+</div>
