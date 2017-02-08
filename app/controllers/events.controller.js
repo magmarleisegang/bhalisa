@@ -1,5 +1,5 @@
 ﻿var Event = require('../models/event');
-console.log(Event);
+
 module.exports = {
     showEvents: showEvents,
     viewEvent: viewEvent,

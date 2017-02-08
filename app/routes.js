@@ -1,7 +1,8 @@
 var express = require('express'),
     path = require('path'),
     mainController = require('./controllers/main.controller'),
-    eventController =require('./controllers/events.controller');
+    eventController =require('./controllers/events.controller'),
+    rsvpController =require('./controllers/rsvp.controller');
 
 var router = express.Router();
 module.exports = router;
@@ -10,6 +11,9 @@ router.get("/", mainController.getHome);
 router.get("/events", eventController.showEvents);
 router.get("/events/seed", eventController.seedEvents);
 router.get("/events/:slug", eventController.viewEvent);
+
+router.get("/rsvp/:code", rsvpController.showRsvp);
+router.post("/rsvp/:code", rsvpController.captureRsvp);
 
 
 router.get("/about", function (req, resp) {
