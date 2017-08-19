@@ -14,8 +14,10 @@
     "ejs": "^2.5.5",
     "express": "^4.14.1",
     "express-ejs-layouts": "^2.2.0",
+    "jsonwebtoken": "^7.4.1",
     "mongodb": "^2.2.24",
     "mongoose": "^4.8.1",
+    "morgan": "^1.8.2",
     "nodemon": "^1.11.0"
   }
 }
