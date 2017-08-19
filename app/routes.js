@@ -2,19 +2,17 @@ var express = require('express'),
     path = require('path'),
     mainController = require('./controllers/main.controller'),
     eventController =require('./controllers/events.controller'),
-    rsvpController =require('./controllers/rsvp.controller');
+    rsvpController =require('./controllers/rsvp.controller'),
+    usersControler = require('./controllers/users.controller'),
+    auth = require('./controllers/auth.controller'),
+    jwt = require('jsonwebtoken');
 
 var router = express.Router();
 module.exports = router;
 
 router.get("/", mainController.getHome);
-router.get("/events", eventController.showEvents);
-router.get("/events/seed", eventController.seedEvents);
-router.get("/events/:slug", eventController.viewEvent);
-
-router.get("/rsvp/:code", rsvpController.showRsvp);
-router.post("/rsvp/:code", rsvpController.captureRsvp);
-
+router.get("/auth", auth.loginpage);
+router.post("/auth", auth.authenticate);
 
 router.get("/about", function (req, resp) {
     var users = [
@@ -33,3 +31,13 @@ router.post("/contact", function (req, resp) {
     console.log(req.body.message);
     resp.send("We've got you, " + req.body.name);
 });
+
+// route middleware to verify a token
+router.use(auth.authMiddleware);
+
+router.get("/events", eventController.showEvents);
+router.get("/events/seed", eventController.seedEvents);
+router.get("/events/:slug", eventController.viewEvent);
+router.get("/rsvp/:code", rsvpController.showRsvp);
+router.post("/rsvp/:code", rsvpController.captureRsvp);
+router.get('/users/seed', usersControler.seed);

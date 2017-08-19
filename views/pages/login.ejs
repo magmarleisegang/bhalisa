@@ -1,0 +1,16 @@
+<div class="jumbotron text-center">
+    <%- contentFor('body') %>
+    <p>Please log in</p>
+    <p><%= msg %></p>
+    <form action="/auth" method="POST">
+        <div class="form-group">
+            <label>Name</name>
+            <input type="text" name="name" class="form-control" value="<%= usr.name %>"/>
+        </div>
+        <div class="form-group">
+            <label>Last Name</name>
+            <input type="password" name="password" class="form-control" value="<%= usr.password %>"/>
+        </div>        
+        <input type="submit" class="btn btn-primary" value="Go!"/>
+    </form>
+</div>

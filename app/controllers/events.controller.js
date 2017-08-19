@@ -23,6 +23,7 @@ function showEvents(req, resp) {
         console.log("promise.then")
         resp.render('pages/events', { events: events });
     }).catch((err) => {
+        console.log(err);
         resp.status(404);
         resp.send('Events not found!');
     });
@@ -48,8 +49,11 @@ function seedEvents(req, resp) {
     for (event of events) {
         var newEvent = new Event(event);
         console.log(newEvent);
-        newEvent.save();
-        console.log("save event: " + newEvent.name);
+        newEvent.save(function(err){
+            if(err)
+                throw err;
+         console.log("save event: " + newEvent.name);           
+        });
     }
     // });
     resp.send("done at " + (new Date()).toString());
